@@ -4,49 +4,112 @@ const knex = require("../database");
 
 router.get("/", async (request, response) => {
   try {
-    const reviews = await knex("review");
-    response.json(reviews);
+    const allReviews = await knex("reviews").select("*");
+    response.json(allReviews);
   } catch (error) {
     throw error;
   }
 });
 
+const addReviews = async ({ body }) => {
+  const { title, description, meal_id, stars, created_date } = body;
+  return await knex("reviews").insert({
+    title: title,
+    description: description,
+    meal_id: meal_id,
+    stars: stars,
+    created_date: created_date,
+  });
+};
 router.post("/", async (request, response) => {
-  const newReviews = await knex("review").insert(request.body);
-  response.json("Reviews added");
-});
-
-router.get("/:id", async (request, response) => {
-  try {
-    const reviewsById = await knex("review").where({
-      id: parseInt(request.params.id),
+  addReviews({
+    body: request.body,
+  })
+    .then((result) => response.json(result))
+    .catch((error) => {
+      response.status(400).send("Bad request").end();
+      console.log(error);
     });
-    response.json(reviewsById);
-  } catch (error) {
-    throw error;
-  }
 });
 
-router.put("/:id", async (request, response) => {
+const getReviewsById = async ({ body, id }) => {
   try {
-    const updatedRview = await knex("review")
-      .where({ id: parseInt(request.params.id) })
-      .update(request.body);
-    response.json("Review updated");
+    const { title, description, meal_id, stars, created_date } = body;
+    return await knex("reviews")
+      .where({
+        id: id,
+      })
+      .select("*");
   } catch (error) {
-    throw error;
+    console.log(error);
   }
+};
+router.get("/:id", async (req, res) => {
+  getReviewsById({
+    body: req.body,
+    id: req.params.id,
+  })
+    .then((result) => res.json(result))
+    .catch((error) => {
+      response.status(400).send("Bad request").end();
+      console.log(error);
+    });
 });
 
-router.delete("/:id", async (request, response) => {
+const getUpdatedReview = async ({ body, id }) => {
+  const { title, description, meal_id, stars, created_date } = body;
+  const meal = await knex.from("reviews").select("*").where({
+    id: id,
+  });
+  if (meal.length === 0) {
+    throw new HttpError("Bad request", `Contact not found: ID ${id}!`, 404);
+  }
+  const queryDto = {
+    title: title,
+  };
+  if (Object.keys(queryDto).length !== 0) {
+    return await knex("reviews")
+      .where({
+        id: id,
+      })
+      .update(queryDto);
+  } else return "Nothing updated!";
+};
+router.put("/:id", async (req, res) => {
+  getUpdatedReview({
+    body: req.body,
+    id: req.params.id,
+  })
+    .then((result) => res.json(result))
+    .catch((error) => {
+      res.status(400).send("Bad request").end();
+      console.log(error);
+    });
+});
+
+const deleteReview = async ({ id }) => {
   try {
-    const deletedReview = await knex("review")
-      .where({ id: parseInt(request.params.id) })
+    if (!id) {
+      return "something went wrong, try againnnnn";
+    }
+    return knex("reviews")
+      .where({
+        id: id,
+      })
       .del();
-  } catch (error) {
-    throw error;
+  } catch (err) {
+    console.log(err);
+    return "something went wrong, try again";
   }
-  response.json("Review deleted");
+};
+router.delete("/:id", async (req, res) => {
+  deleteReview({
+    id: req.params.id,
+  })
+    .then((result) => res.json(result))
+    .catch((error) => {
+      res.status(400).send("Bad request").end();
+      console.log(error);
+    });
 });
-
 module.exports = router;
