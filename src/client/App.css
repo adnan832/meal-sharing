@@ -1,3 +1,232 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: salmon;
+  width: 100%;
+  height: 125px;
+  border-radius: 15px;
+}
+
+.headerLogo {
+  padding-top: 15px;
+  padding-left: 20px;
+}
+.headerLogo img {
+  border-radius: 30px;
+}
+.headerText {
+  padding-top: 15px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: white;
+  text-shadow: 8px 8px 12px #ed0606;
+  padding-left: 5px;
+}
+.navbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-top: 85px;
+  padding-left: 150px;
+
+  width: 45%;
+}
+.navbar a {
+  padding: 10px;
+  font-weight: bolder;
+}
+.navbar a:active {
+  background-color: #00b4cc;
+  color: white;
+  font-size: 115%;
+  border-radius: 10px;
+}
+.navbar a:hover {
+  background-color: #00b4cc;
+  color: white;
+  font-size: 115%;
+  border-radius: 10px;
+}
+.navbar a:focus {
+  background-color: #00b4cc;
+  color: white;
+  font-size: 115%;
+  border-radius: 10px;
+}
+.mealsTop {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.mealsMain {
+  display: flex;
+  padding: 20px;
+  border: 3px solid salmon;
+  width: 545px;
+  margin: 5px;
+  border-radius: 25px;
+}
+
+.mealsMain1 {
+  padding: 20px;
+  border: 3px solid salmon;
+  width: 200px;
+  margin: 5px;
+  border-radius: 25px;
+}
+.mealsMain:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
+}
+.mealsImage {
+  margin-right: 15px;
+}
+.mealsImage img {
+  border: 3px solid salmon;
+  border-radius: 25px;
+}
+.mealTop {
+  margin: 10px;
+  text-align: center;
+}
+.mealTop img {
+  border: 3px solid salmon;
+  border-radius: 25px;
+}
+.banner {
+  height: 580px;
+  position: relative;
+  border-radius: 25px;
+}
+.search {
+  position: absolute;
+  top: 7%;
+  left: 65%;
+  -webkit-appearance: none;
+}
+
+.search h2 {
+  color: rgb(0, 0, 3);
+  font-weight: bold;
+}
+.mealssearch {
+  position: absolute;
+  top: 3%;
+  left: 77%;
+}
+.searchBox {
+  border: 3px solid #00b4cc;
+  padding: 5px;
+  height: 35px;
+  border-radius: 25px;
+  outline: none;
+  color: black;
+}
+.reservation {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  margin-bottom: 10px;
+}
+.reserveform {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 20px;
+  border: 3px solid salmon;
+  border-radius: 25px;
+  background-color: salmon;
+  font-weight: bolder;
+}
+.reserveform input,
+select {
+  width: 250px;
+  height: 30px;
+  border-radius: 25px;
+
+  padding-left: 10px;
+}
+.reserveform textarea {
+  width: 250px;
+  height: 180px;
+  border-radius: 25px;
+}
+.reserveform button {
+  margin-left: 70px;
+}
+#addmealdate {
+  color: black;
+}
+
+.reserveform button {
+  width: 100px;
+}
+
+.mdl-textfield:not(.is-dirty) input::-webkit-datetime-edit {
+  color: transparent;
+}
+input:focus::-webkit-datetime-edit {
+  color: rgba(255, 255, 255, 0.46) !important;
+}
+input {
+  -webkit-appearance: none;
+}
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: salmon;
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+.footernavbar {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+
+  font-weight: bolder;
+}
+.footernavbar a:focus {
+  background-color: #00b4cc;
+  color: white;
+  font-size: 115%;
+  border-radius: 20px;
+}
+.footernavbar a:hover {
+  background-color: #00b4cc;
+  color: white;
+  font-size: 115%;
+  border-radius: 20px;
+}
+.footernavbar a {
+  text-align: center;
+  width: auto;
+}
+.footerSmIcons {
+  margin-top: 0px;
+}
+.footerSmIcons img {
+  padding-right: 15px;
+  margin-bottom: 07px;
+}
+@media screen and (max-width: 600px) {
+  .navbar {
+    float: none;
+  }
+  .navbar a {
+    position: static;
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .navbar {
+    border: 1px solid #ccc;
+  }
 }
