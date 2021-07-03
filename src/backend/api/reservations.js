@@ -15,7 +15,6 @@ const addReservation = async ({ body }) => {
   const {
     number_of_guests,
     meal_id,
-    reservation_date,
     created_date,
     contact_phonenumber,
     contact_name,
@@ -24,7 +23,6 @@ const addReservation = async ({ body }) => {
   return await knex("reservations").insert({
     number_of_guests: number_of_guests,
     meal_id: meal_id,
-    reservation_date: reservation_date,
     created_date: created_date,
     contact_phonenumber: contact_phonenumber,
     contact_name: contact_name,
