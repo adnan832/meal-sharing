@@ -3,11 +3,11 @@ import Search from "./Search";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-export default function Home({ meals, setsearchmeal, searchActive }) {
+export default function Home({ meals, setSearchMeal, searchActive }) {
   return (
     <div className="banner">
       <div className="search">
-        <Search meals={meals} setmeals={setsearchmeal} />
+        <Search meals={meals} setMeals={setSearchMeal} />
 
         {searchActive &&
           meals.map((oneMeal) => {

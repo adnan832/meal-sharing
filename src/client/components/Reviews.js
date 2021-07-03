@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 export default function Reviews() {
-  const [reviews, setreviews] = useState([]);
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     fetchReviews();
@@ -11,7 +11,7 @@ export default function Reviews() {
   async function fetchReviews() {
     const response = await fetch("/api/reviews");
     const reviews = await response.json();
-    setreviews(reviews);
+    setReviews(reviews);
   }
   return (
     <div className="mealsTop">

@@ -5,16 +5,16 @@ import Reservations from "./Reservations";
 
 export default function Meal({ meals }) {
   const [isAvailabe, setisAvailabe] = useState(false);
-  const [meal, setmeal] = useState({});
-  const [showForm, setshowForm] = useState(false);
+  const [meal, setMeal] = useState({});
+  const [showForm, setShowForm] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
-    setmeal(meals.find((onemeal) => onemeal.id == id));
-    fetchavailable();
+    setMeal(meals.find((oneMeal) => oneMeal.id == id));
+    fetchaVailable();
   }, []);
 
-  async function fetchavailable() {
+  async function fetchaVailable() {
     const response = await fetch("/api/meals?availableReservations=true");
     const available = await response.json();
 
@@ -42,7 +42,7 @@ export default function Meal({ meals }) {
       )}
 
       {isAvailabe ? (
-        <button onClick={() => setshowForm(true)}>Reserve Seat</button>
+        <button onClick={() => setShowForm(true)}>Reserve Seat</button>
       ) : (
         <h2> No reservation available for this meal</h2>
       )}

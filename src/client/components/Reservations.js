@@ -2,10 +2,10 @@ import { useState } from "react";
 import React from "react";
 
 export default function Reservations({ meal }) {
-  const [name, setname] = useState("");
-  const [number, setnumber] = useState("");
-  const [guests, setguests] = useState("");
-  const [email, setemail] = useState("");
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
+  const [guests, setGuests] = useState("");
+  const [email, setEmail] = useState("");
 
   const saveReservation = async (reservation) => {
     const response = await fetch("/api/reservations", {
@@ -18,7 +18,7 @@ export default function Reservations({ meal }) {
     const message = await response.json();
     alert(message);
   };
-  function submitdata(e) {
+  function submitData(e) {
     e.preventDefault();
     const reservation = {
       number_of_guests: guests,
@@ -33,12 +33,12 @@ export default function Reservations({ meal }) {
   return (
     <div className="reservation ">
       <h4>Reserve this meal</h4>
-      <form className="reserveform" onSubmit={submitdata}>
+      <form className="reserveform" onSubmit={submitData}>
         <label htmlFor="">Name* </label>
         <input
           name="name"
           value={name}
-          onChange={(e) => setname(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
           type="text"
           required
         />
@@ -47,7 +47,7 @@ export default function Reservations({ meal }) {
         <input
           name="number"
           value={number}
-          onChange={(e) => setnumber(e.target.value)}
+          onChange={(e) => setNumber(e.target.value)}
           type="number"
           required
         />
@@ -56,7 +56,7 @@ export default function Reservations({ meal }) {
         <input
           name="guest"
           value={guests}
-          onChange={(e) => setguests(e.target.value)}
+          onChange={(e) => setGuests(e.target.value)}
           type="number"
           required
         />
@@ -65,7 +65,7 @@ export default function Reservations({ meal }) {
         <input
           name="email"
           value={email}
-          onChange={(e) => setemail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           type="email"
           required
         />

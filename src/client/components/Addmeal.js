@@ -57,7 +57,7 @@ const AddMeal = ({ meals }) => {
       return error;
     }
   }
-  function slectedoptions() {
+  function selectedOptions() {
     meals.map((meal) => {
       return (
         <option value={meal.title} width="250px">
@@ -82,8 +82,7 @@ const AddMeal = ({ meals }) => {
           value={inputValues.title}
           onChange={changeEventhandler}
         ></input>
-        <br />
-        <br />
+
         <label htmlFor="location">Your Location* : </label>
         <input
           type="text"
@@ -93,8 +92,6 @@ const AddMeal = ({ meals }) => {
           value={inputValues.location}
           onChange={changeEventhandler}
         ></input>
-        <br />
-        <br />
 
         <label htmlFor="when">Date of event * : </label>
         <input
@@ -108,8 +105,6 @@ const AddMeal = ({ meals }) => {
           id="#addmealdate"
         ></input>
 
-        <br />
-        <br />
         <label htmlFor="max_reservations">Max Reservations* : </label>
         <input
           type="number"
@@ -120,8 +115,6 @@ const AddMeal = ({ meals }) => {
           onChange={changeEventhandler}
         ></input>
 
-        <br />
-        <br />
         <label htmlFor="price">Price* : </label>
         <input
           type="number"
@@ -131,8 +124,6 @@ const AddMeal = ({ meals }) => {
           required
           onChange={changeEventhandler}
         ></input>
-        <br />
-        <br />
 
         <label htmlFor="description" className="meal_description">
           Description* :
@@ -145,8 +136,7 @@ const AddMeal = ({ meals }) => {
           onChange={changeEventhandler}
           width="850px"
         ></textarea>
-        <br />
-        <br />
+
         <button type="submit" className="meal_submit_btn">
           Submit
         </button>

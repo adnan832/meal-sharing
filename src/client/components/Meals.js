@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Search from "./Search";
 import { useState } from "react";
-export default function Meals({ meals, setsearchmeal }) {
+export default function Meals({ meals, setSearchMeal }) {
   return (
     <div className="mealsTop">
       <div className="mealssearch">
-        <Search meals={meals} setmeals={setsearchmeal} />
+        <Search meals={meals} setMeals={setSearchMeal} />
       </div>
       {meals.map((oneMeal, index) => {
         return (

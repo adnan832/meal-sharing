@@ -15,8 +15,8 @@ import Search from "./components/Search";
 import "./App.css";
 
 function App() {
-  const [meals, setmeals] = useState([]);
-  const [searchedMeal, setsearchedMeal] = useState([]);
+  const [meals, setMeals] = useState([]);
+  const [searchedMeal, setSearchedMeal] = useState([]);
 
   useEffect(() => {
     fetchMeals();
@@ -25,10 +25,10 @@ function App() {
   async function fetchMeals() {
     const response = await fetch("/api/meals");
     const meals = await response.json();
-    setmeals(meals);
+    setMeals(meals);
   }
-  function setsearchmeal(currentMeal) {
-    setsearchedMeal(currentMeal);
+  function setSearchMeal(currentMeal) {
+    setSearchedMeal(currentMeal);
   }
 
   return (
@@ -38,14 +38,14 @@ function App() {
         <Route exact path="/">
           <Home
             meals={searchedMeal.length > 0 ? searchedMeal : meals}
-            setsearchmeal={setsearchmeal}
+            setSearchMeal={setSearchMeal}
             searchActive={searchedMeal.length > 0 ? true : false}
           />
         </Route>
         <Route exact path="/meals">
           <Meals
             meals={searchedMeal.length > 0 ? searchedMeal : meals}
-            setsearchmeal={setsearchmeal}
+            setSearchMeal={setSearchMeal}
           />
         </Route>
         <Route path="/meal/:id">
